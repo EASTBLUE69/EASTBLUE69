@@ -1,0 +1,1 @@
+{"version":3,"file":"string.js","sourceRoot":"","sources":["../../src/util/string.ts"],"names":[],"mappings":";;AAAW,QAAA,YAAY,GAAG,UAAC,MAAM;IAC7B,IAAI,MAAM,EAAE;QACR,MAAM,GAAG,MAAM,CAAC,OAAO,CAAC,UAAU,EAAE,YAAY,CAAC,CAAC;KACrD;IACD,OAAO,MAAM,CAAC;AAClB,CAAC,CAAA"}

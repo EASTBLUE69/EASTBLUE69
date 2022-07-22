@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .list-wrap {
+            list-style: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .colspan-btn {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h3>组件嵌套生成树形</h3>
+<div id="div1" class="div">
+     <my-tree :model="treeData"></my-tree>
+</div>
+<hr>
+<template id="test">
+    <li class="list-wrap">
+        <div class="up-level"><span k-on:click="changeStatus()">{{ model.name }}</span><span>{{ isOpen ? '-' : '+' }}</span></div>
+        <div class="down-level" k-show="isOpen">
+            <ul>
+                <my-tree k-for="model in model.children" :model="model"></my-tree>
+            </ul>
+            <button k-on:click="add()">+</button>
+        </div>
+    </li>
+</template>
+<script src="../dist/bundle.js"></script>
+<script>
+
+    var test = document.getElementById("test");
+
+    Kmv.components('my-tree', {
+        template: test.innerHTML,
+        data: function () {
+            return {
+                isOpen: false
+            }
+        },
+        methods: {
+            'add': function() {
+                this.model.children.push({
+                    name: Math.random() + ' level',
+                    children: []
+                });
+            },
+            changeStatus: function() {
+                this.isOpen = !this.isOpen;
+                // console.log(this.isOpen);
+            }
+        },
+    });
+
+    let kmv = new Kmv({
+        el: '#div1',
+        data: {
+            treeData: {
+                name: '1 level',
+                children: [
+                    {name: '2 level', children:[
+                        {
+                            name: "3level", children: [
+                            {
+                                name: "4level", children: [
+                                {
+                                    name: "5level", children: []
+                                }
+                            ]
+                            }
+                        ]
+                        }
+                    ]}
+                ]
+            }
+        },
+        methods: {
+            add: function () {
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

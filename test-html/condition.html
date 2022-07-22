@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件</title>
+</head>
+<body>
+<div id="div1" class="div">
+    <span>{{ value }}</span>
+    <h1>{{ status[value] }}</h1>
+    <button k-on:click="changeStatus()">改变状态</button>
+</div>
+<script src="../dist/bundle.js"></script>
+<script>
+    var kmv = new Kmv({
+        el: '#div1',
+        data: {
+            value: 1,
+            status: {
+                0: '已检查',
+                1: '未检查',
+            }
+        },
+        methods: {
+            changeStatus: function() {
+                this.value = !this.value ? 1: 0;
+            }
+        }
+    });
+</script>
+</body>
+</html>

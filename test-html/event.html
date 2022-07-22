@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1" class="div">
+    {{ name }}
+    <button k-on:click="say(this, name)">click</button>
+</div>
+<script src="../dist/bundle.js"></script>
+<script>
+    var kmv = new Kmv({
+        el: '#div1',
+        data: {
+            name: "Hello kmv.js!",
+            show: true
+        },
+        methods: {
+            say: function(obj, name) {
+                this.name = this.name.split('').reverse().join('')
+            },
+            log: function () {
+                console.log("fuck");
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1" class="div">
+    <button onclick="add()">add</button>
+    <button onclick="splice()">splice</button>
+    <button onclick="pop()">pop</button>
+    <button onclick="shift()">shift</button>
+    <button onclick="reverse()">reverse</button>
+    <button onclick="sort()">sort</button>
+    {{ name }}
+    <hr>
+    <h3 k-for="i in list">{{ i }}</h3>
+</div>
+<script src="../dist/bundle.js"></script>
+<script>
+    let kmv = new Kmv({
+        el: '#div1',
+        data: {
+            name: 'Jason',
+            list: [334,22],
+            list2: {
+                treeData: [{
+                    name: "kelen",
+                    children: []
+                }, {
+                    name: "kobe",
+                    children: []
+                }]
+            },
+            obj: {
+                a: 1,
+                b: 2
+            }
+        }
+    });
+
+    function add() {
+        kmv.data.list.push(Math.random());
+    }
+    function splice() {
+        kmv.data.list.splice(1, 1, Math.random())
+    }
+    function pop() {
+        kmv.data.list.pop();
+    }
+    function shift() {
+        kmv.data.list.shift();
+    }
+    function reverse() {
+        kmv.data.list.reverse();
+    }
+    function sort() {
+        kmv.data.list.sort();
+    }
+</script>
+</body>
+</html>

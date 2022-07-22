@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hello1 {
+            font-weight: bolder;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" class="div">
+    <button k-on:click="changeShow()">点击显示</button>
+    <div k-show="isShow">show</div>
+    <h3 k-if="isShow">if</h3>
+</div>
+<script src="../dist/bundle.js"></script>
+<script>
+    let kmv = new Kmv({
+        el: '#div1',
+        data: {
+            isShow: false
+        },
+        methods: {
+            changeShow: function() {
+                this.isShow =  !this.isShow;
+            }
+        }
+    });
+</script>
+</body>
+</html>

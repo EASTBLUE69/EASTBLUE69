@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1" class="div">
+    <input k-model="name"/>
+    <h1>{{ fullName }}</h1>
+</div>
+<script src="../dist/bundle.js"></script>
+<script>
+    let kmv = new Kmv({
+        el: '#div1',
+        data: {
+            name: "Jason",
+            fullName: "Jason Woo",
+            url: true
+        },
+        watch: {
+            name: function(newVal) {
+                this.fullName = "Woo " + newVal;//Woo为保持不动的基本元素 清空了后屏幕上至少有Woo
+            },
+        }
+    });
+</script>
+</body>
+</html>

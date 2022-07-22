@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .list-title {
+            font-weight: bold;
+        }
+        .list-time {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div id="div1" class="div">
+    <select k-on:change="selectChange(this)" name="" id="">
+        <option k-for="item in types" k:value="{{ item.num }}">{{ item.name }}</option>
+    </select>
+    您选择了<h3 id="selectVal"></h3>
+</div>
+<script src="../dist/bundle.js"></script>
+<script>
+    let options = [
+        { name: "南京", num: 100 },
+        { name: "苏州", num: 90 },
+        { name: "杭州", num: 80 },
+        { name: "北境", num: 20 }
+    ]
+   let kmv = new Kmv({
+        el: '#div1',
+        data: {
+            types: options
+        },
+        methods: {
+            selectChange: function (obj) {
+                document.getElementById("selectVal").innerHTML = obj.value;
+            }
+        }
+    });
+</script>
+</body>
+</html>
